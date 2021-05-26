@@ -38,7 +38,7 @@ const savePlaylist = async (req, res, next) => {
       },
       data: {
         name: req.body.name || 'vibe check playlist',
-        public: false,
+        public: true,
       },
     });
 
