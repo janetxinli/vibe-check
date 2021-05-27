@@ -57,7 +57,6 @@ const savePlaylist = async (req, res, next) => {
 
     res.status(201).send({ url: playlist.data.external_urls.spotify });
   } catch (err) {
-    console.log(err.message);
     next(err);
   }
 };

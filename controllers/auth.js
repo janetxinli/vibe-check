@@ -79,7 +79,6 @@ const access = async (req, res) => {
 
     res.redirect(`${config.FRONTEND_URL}/callback?${redirectString}`);
   } catch (err) {
-    console.log(err);
     res.redirect(`${config.FRONTEND_URL}/auth-error`);
   }
 };
