@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const SCOPE =
-  'user-read-recently-played user-read-private playlist-modify-public';
+  'user-read-recently-played user-top-read user-read-private playlist-modify-public';
 
 module.exports = {
   PORT,
