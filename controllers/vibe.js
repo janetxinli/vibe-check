@@ -40,20 +40,22 @@ const recent = async (req, res, next) => {
       },
     });
 
-    if (songs.length === 0) {
+    if (songs.data.items.length === 0) {
       res.status(204).end();
+    } else {
+      const songsClean = cleanSongData(
+        songs.data.items,
+        req.query.timeframe === 'recent'
+      );
+      const songFeatures = await Promise.all(
+        songsClean.map((s) => getSongFeatures(s, accessToken))
+      );
+      const overview = getOverview(songFeatures);
+  
+      res.status(200).send({ songs: songsClean, overview });
     }
 
-    const songsClean = cleanSongData(
-      songs.data.items,
-      req.query.timeframe === 'recent'
-    );
-    const songFeatures = await Promise.all(
-      songsClean.map((s) => getSongFeatures(s, accessToken))
-    );
-    const overview = getOverview(songFeatures);
 
-    res.status(200).send({ songs: songsClean, overview });
   } catch (err) {
     next(err);
   }
