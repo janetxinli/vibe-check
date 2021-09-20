@@ -1,0 +1,39 @@
+@import '../common/variables';
+@import '../common/mixins';
+
+.alert {
+  margin: 1em 0;
+  padding: 1em;
+  width: 100%;
+  border-radius: 4px;
+
+  .message {
+    @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+    font-weight: 600;
+    text-align: center;
+    margin-left: 0.25em;
+    margin-top: 1em;
+
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+
+  &-icon {
+    width: 30%;
+    max-width: 8em;
+    margin-top: 1em;
+  }
+}
+
+.success {
+  background-color: lighten($turquoisegreen, 10%);
+}
+
+.error {
+  background-color: lighten($claret, 65%);
+}
+
+.info {
+  background-color: lighten($lightcyan, 1%);
+}

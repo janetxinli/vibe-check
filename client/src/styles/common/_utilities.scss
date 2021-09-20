@@ -1,0 +1,117 @@
+@import 'variables';
+@import 'mixins';
+@import 'animations';
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: $smscreen) {
+    width: 70%;
+    max-width: 1024px;
+  }
+}
+
+.df {
+  display: flex;
+
+  &-fc {
+    flex-direction: column;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
+
+  &-ai-fe {
+    align-items: flex-end;
+  }
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-fe {
+    justify-content: flex-end;
+  }
+}
+
+/* container for centering child vertically */
+.vertical-center-parent {
+  @extend .df;
+  @extend .df-fc;
+  @extend .df-jc-c;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.bounce {
+  &:active {
+    transform: translateY(0.1em) scaleX(0.98);
+  }
+}
+
+/* create a btn class so styles can be 
+applied to the login a element */
+.btn {
+  font-family: 'Poppins', 'Sans Serif';
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  @include responsive-text(1rem, 1.125rem, 1.25rem);
+  @extend .bounce;
+
+  &-primary {
+    color: $darkpurple;
+    background-color: $turquoisegreen;
+    border: 2px solid $turquoisegreen;
+
+    &:hover {
+      background-image: linear-gradient(
+        $turquoisegreen,
+        lighten($turquoisegreen, 5%)
+      );
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 2px 1px darken($turquoisegreen, 20%);
+    }
+  }
+
+  &-secondary {
+    background-color: inherit;
+    border: 2px solid $darkpurple;
+
+    &:hover {
+      background-image: linear-gradient(
+        lighten($lightcyan, 2%),
+        lighten($claret, 70%)
+      );
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 2px 1px $claret;
+    }
+  }
+
+  &-text {
+    background-color: inherit;
+    border: none;
+
+    &:hover,
+    &:active {
+      box-shadow: 0px 1px 2px 1px lighten($claret, 45%);
+    }
+  }
+}
+
+.emphasis {
+  @include responsive-text(1.5rem, 1.625rem, 1.75rem);
+  margin: 0;
+  font-weight: 700;
+  color: $claret;
+}

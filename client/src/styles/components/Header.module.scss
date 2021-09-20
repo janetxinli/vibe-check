@@ -1,0 +1,30 @@
+@use '../common/utilities';
+@import '../common/variables';
+@import '../common/mixins';
+
+.header {
+  padding: 1.5em 0;
+
+  h1 {
+    @include responsive-text(1.25rem, 1.5rem, 2rem);
+    padding-left: 0.25em;
+    color: $claret;
+    text-shadow: 2px 2px 0px $lightcyan;
+  }
+
+  img {
+    width: 3em;
+  }
+
+  .about {
+    @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+    @extend .bounce;
+    font-weight: 600;
+    color: $claret;
+    display: inline-block;
+
+    &:hover {
+      color: lighten($claret, 10%);
+    }
+  }
+}

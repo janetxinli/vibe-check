@@ -1,0 +1,38 @@
+@import '../common/variables';
+@import '../common/mixins';
+
+.song {
+  margin-bottom: 1em;
+  cursor: pointer;
+
+  .album {
+    width: 15%;
+    min-width: 75px;
+    max-width: 100px;
+    margin-right: 0.5em;
+
+    @media (min-width: $smscreen) {
+      margin-right: 1em;
+    }
+  }
+
+  &-info {
+    max-width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    p {
+      margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &-title {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+    }
+  }
+}

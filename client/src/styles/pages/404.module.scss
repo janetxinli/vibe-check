@@ -1,0 +1,21 @@
+@import '../common/mixins';
+@import '../common/variables';
+
+.error-page {
+  h2 {
+    @include responsive-text(4rem, 5rem, 6rem);
+    color: $claret;
+    line-height: 1;
+  }
+
+  p {
+    @include responsive-text(1.5rem, 2rem, 2.5rem);
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  img {
+    width: 30%;
+    max-width: 8em;
+  }
+}
