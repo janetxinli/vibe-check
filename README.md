@@ -1,16 +1,15 @@
-# Vibe Check Backend
-
-This server is hosted by Heroku, and is live at: https://mysterious-castle-06210.herokuapp.com/
+# Vibe Check
 
 ## About
+vibe check is a web app that analyzes your Spotify listening history to determine your mood. It uses Spotify's Web API for user authorization (via OAuth 2.0) and to get the list of tracks in a user's recent listening history or their top played tracks. The frontend of this app is implemented in `Next.js`, while the backend is implemented using `Express`.
 
-vibe check is a web app that analyzes your Spotify listening history to determine your mood. It uses Spotify's Web API for user authorization (via OAuth 2.0) and to get the list of tracks in a user's recent listening history or their top played tracks.
+This was a fun personal project that I created in order to explore my own listening habits while improving my web dev skills. I love music and think of the songs that I listen to as the soundtrack to my life. Music is emotional -- it can completely change your mood, and how you're feeling influences what music you choose to listen to. 
 
-Some number crunching is done on the audio features in this list of tracks in order to determine the user's mood. vibe check can also save these tracks to a new public playlist.
+This project was a fun way for me to improve my Javascript skills. I particularly wanted to learn the `Next.js` framework and start using `scss` for styling. On the backend, I learned a lot about OAuth 2.0.
 
-This project was a fun way for me to practice my Javascript skills. I learned a lot about OAuth 2.0 and server-side programming. The frontend of this app is implemented in `Next.js` and can be found [here](https://github.com/janetxinli/vibe-check-frontend).
+The frontend is hosted on Vercel, and is live at https://vibecheck.vercel.app/
 
-## Dependencies
+## Backend Dependencies
 
 - `axios` - making requests to Spotify's web API
 - `cookie-parser` - parse the Cookie header in a request
@@ -26,12 +25,18 @@ This project was a fun way for me to practice my Javascript skills. I learned a 
 ## App Structure
 
 `index.js`: entry point for starting the server
+
 `app.js`: defines the express server, middleware, routes and error handling
+
 `controllers/`: logic for route handling
+
 `helpers/`: helper functions for cleaning data
+
 `utils/`: configuration and utility functions
 
-## Setup
+`client/`: frontend code (more info and dependencies can be found in the subdirectory's README)
+
+## Running the app locally
 
 **Note**: you will need to set up your clone with [Spotify Developer](https://developer.spotify.com/dashboard/) and add your client ID/secret to a file called `.env` in the root of the project's directory in order to run this app locally. You will also need to define a port and a secret for `jsonwebtoken` in this file.
 
