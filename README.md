@@ -56,8 +56,8 @@ Once you have set up your environment, start the app:
 1. Clone this repo, then install the dependencies required
 
 ```bash
-git clone https://github.com/janetxinli/vibe-check-backend.git
-cd vibe-check-backend && npm install
+git clone https://github.com/janetxinli/vibe-check.git
+cd vibe-check && npm install
 ```
 
 2. Start the server in development mode

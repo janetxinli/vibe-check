@@ -63,12 +63,12 @@ export default function About() {
         </p>
         <h3>Source Code</h3>
         <p>
-          Check out the source code for the frontend (what you&apos;re seeing){' '}
-          <a target="_blank" href="https://github.com/janetxinli/vibe-check-frontend" rel="noopener noreferrer">
-            here
-          </a>
-          , and the backend{' '}
-          <a target="_blank" href="https://github.com/janetxinli/vibe-check-backend" rel="noopener noreferrer">
+          Check out the source code{' '}
+          <a
+            target="_blank"
+            href="https://github.com/janetxinli/vibe-check"
+            rel="noopener noreferrer"
+          >
             here
           </a>
           .
