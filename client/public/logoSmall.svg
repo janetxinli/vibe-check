@@ -1,0 +1,18 @@
+<svg width="115" height="115" xmlns="http://www.w3.org/2000/svg" xmlns:undefined="https://boxy-svg.com">
+ <defs>
+  <style >@font-face {
+        font-family: "Raleway";
+        font-style: normal; font-weight: 700;
+        font-stretch: normal;
+        font-unicode-range: U+0-10FFFF;
+        font-variant: normal;
+        font-feature-settings: normal;
+        src: url(https://fonts.gstatic.com/s/raleway/v18/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pYCPNLA3JC9c.ttf) format("ttf");
+      }</style>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path fill-opacity="0.6" stroke="#B3DEC1" stroke-width="7px" fill="none" d="m94.285,67.487c-7.126,7.522 -13.235,14.958 -18.325,22.309c-5.09,7.35 -11.824,10.171 -20.204,8.461c-8.378,-1.709 -17.971,-3.29 -28.777,-4.743c-10.807,-1.454 -16.014,-8.035 -15.623,-19.744c0.392,-11.71 0.744,-23.121 1.057,-34.232c0.314,-11.112 5.169,-18.847 14.566,-23.206c9.396,-4.359 18.324,-5.257 26.781,-2.692c8.457,2.564 16.288,5.897 23.493,10c7.204,4.103 13.625,10.556 19.263,19.36c5.638,8.803 4.894,16.966 -2.231,24.487z" id="blob"/>
+  <path fill-opacity="0.6" fill="none" stroke="#750D37" stroke-width="7px" d="m101.353,74.818c-7.127,7.522 -13.235,14.958 -18.324,22.308c-5.09,7.351 -11.825,10.172 -20.204,8.462c-8.379,-1.709 -17.972,-3.29 -28.778,-4.744c-10.807,-1.453 -16.014,-8.034 -15.622,-19.744c0.391,-11.71 0.743,-23.12 1.057,-34.231c0.313,-11.112 5.168,-18.847 14.565,-23.206c9.397,-4.359 18.324,-5.257 26.781,-2.693c8.458,2.565 16.288,5.898 23.492,10.001c7.205,4.102 13.626,10.555 19.265,19.359c5.638,8.804 4.894,16.966 -2.232,24.488z" id="path-1"/>
+ </g>
+</svg>

@@ -1,0 +1,23 @@
+@import '../common/variables';
+@import '../common/mixins';
+
+.overview {
+  .mood {
+    width: 100%;
+    padding: 1em;
+
+    @media (min-width: $mdscreen) {
+      padding: 2em;
+    }
+
+    &-intro {
+      @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+      margin-bottom: 0.5em;
+    }
+  }
+
+  p {
+    width: 100%;
+    text-align: center;
+  }
+}

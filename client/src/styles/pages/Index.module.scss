@@ -1,0 +1,37 @@
+@import '../common/variables';
+@import '../common/utilities';
+@import '../common/mixins';
+
+.welcome {
+  h2 {
+    @include responsive-text(1.75rem, 2rem, 2.5rem);
+    text-align: center;
+    line-height: 1;
+  }
+
+  p {
+    @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+    margin: 1.5em 0;
+    text-align: center;
+  }
+
+  &-btn-container {
+    width: 75%;
+    max-width: 20em;
+
+    & > :first-child {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  a,
+  &-btn {
+    @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+  }
+
+  .btn-login-logo {
+    margin-left: 0.5em;
+    width: 1.5em;
+    z-index: 2;
+  }
+}

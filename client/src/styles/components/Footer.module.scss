@@ -1,0 +1,26 @@
+@import '../common/variables';
+
+.footer {
+  margin-top: 2em;
+  padding: 1em 0;
+  background-color: $claret;
+
+  p,
+  a {
+    color: $babypowder;
+  }
+
+  p {
+    width: 100%;
+    text-align: center;
+  }
+
+  a {
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      text-decoration: underline;
+    }
+  }
+}

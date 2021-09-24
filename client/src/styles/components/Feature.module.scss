@@ -1,0 +1,27 @@
+@import '../common/variables';
+@import '../common/utilities';
+
+.feature {
+  width: 100%;
+  padding: 1em 0;
+  border-top: 4px solid rgba($turquoisegreen, 0.6);
+
+  @media (min-width: $mdscreen) {
+    padding: 2em;
+  }
+
+  &-name {
+    @include responsive-text(1.125rem, 1.25rem, 1.5rem);
+    margin-top: 0.5em;
+  }
+
+  &-emphasis {
+    @extend .emphasis;
+  }
+
+  &:nth-child(even) {
+    .emphasis {
+      color: darken($turquoisegreen, 15%);
+    }
+  }
+}
