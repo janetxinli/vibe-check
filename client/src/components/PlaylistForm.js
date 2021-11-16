@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { savePlaylist } from '../services';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { GlobalContext } from '../context/GlobalState';
 import Button from './Button';
@@ -14,7 +14,7 @@ const PlaylistForm = ({
   mood,
   timeframe,
 }) => {
-  const context = useContext(GlobalContext);
+  const { accessToken } = useContext(GlobalContext);
 
   const [playlistName, setPlaylistName] = useState(`${mood} vibes`);
   const [newPlaylistURL, setNewPlaylistURL] = useState(null);
@@ -23,18 +23,7 @@ const PlaylistForm = ({
   const createPlaylist = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `${process.env.BACKEND_URL}/api/save-playlist`,
-        {
-          tracks,
-          name: playlistName,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${context.accessToken}`,
-          },
-        }
-      );
+      const res = await savePlaylist(tracks, playlistName, accessToken);
       toggleShowForm();
       setNewPlaylistURL(res.data.url);
     } catch (err) {

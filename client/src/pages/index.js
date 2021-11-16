@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { loginUrl } from '../services';
 import { GlobalContext } from '../context/GlobalState';
 import Button from '../components/Button';
 import styles from '../styles/pages/Index.module.scss';
@@ -63,7 +64,7 @@ export default function Home() {
             >
               <a
                 className={`df df-ai-c df-jc-c btn btn-primary ${styles['btn-login']} `}
-                href={`${process.env.BACKEND_URL}/api/login`}
+                href={loginUrl}
               >
                 Log in With Spotify
                 <img

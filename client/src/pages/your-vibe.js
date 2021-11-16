@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import axios from 'axios';
+import { getRefreshedToken, getSongs } from '../services';
 import { GlobalContext } from '../context/GlobalState';
 import SpotifyOverview from '../components/SpotifyOverview';
 import RecentSongs from '../components/RecentSongs';
@@ -26,9 +26,7 @@ export default function YourVibe() {
       if (new Date().getTime() >= context.expires) {
         // access token has expired; get refreshed token
         try {
-          const refreshed = await axios.get(
-            `${process.env.BACKEND_URL}/api/refresh?refreshToken=${context.refreshToken}`
-          );
+          const refreshed = await getRefreshedToken(context.refreshToken);
           context.refresh(refreshed.data);
           localStorage.setItem(
             'loggedInUser',
@@ -39,16 +37,7 @@ export default function YourVibe() {
             })
           );
 
-          const config = {
-            headers: {
-              Authorization: `Bearer ${refreshed.data.accessToken}`,
-            },
-          };
-
-          const res = await axios.get(
-            `${process.env.BACKEND_URL}/api/vibe?timeframe=${timeframe}`,
-            config
-          );
+          const res = await getSongs(timeframe, refreshed.data.accessToken)
 
           if (res.status === 204) {
             // no songs to show
@@ -76,11 +65,7 @@ export default function YourVibe() {
         };
 
         try {
-          const res = await axios.get(
-            `${process.env.BACKEND_URL}/api/vibe?timeframe=${timeframe}`,
-            config
-          );
-
+          const res = await getSongs(timeframe, context.accessToken);
           if (res.status === 204) {
             // no songs to show
             setError({
