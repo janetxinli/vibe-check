@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useReducer } from 'react';
+import React, { useEffect, createContext, useReducer, useState } from 'react';
 import PropTypes from 'prop-types';
 import AppReducer from './AppReducer';
 
@@ -14,6 +14,7 @@ export const GlobalContext = createContext(initialState);
 // provider component
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [loading, setLoading] = useState(true);
 
   // actions
   const add = (authInfo) => {
@@ -21,6 +22,8 @@ export const GlobalProvider = ({ children }) => {
       type: 'ADD_TOKEN',
       payload: authInfo,
     });
+
+    localStorage.setItem('loggedInUser', JSON.stringify(authInfo));
   };
 
   const refresh = (updateInfo) => {
@@ -28,12 +31,23 @@ export const GlobalProvider = ({ children }) => {
       type: 'REFRESH_TOKEN',
       payload: updateInfo,
     });
+
+    localStorage.setItem(
+      'loggedInUser',
+      JSON.stringify({
+        ...state,
+        accessToken: updateInfo.accessToken,
+        expires: updateInfo.expires,
+      })
+    );
   };
 
   const remove = () => {
     dispatch({
       type: 'DELETE_TOKEN',
     });
+
+    localStorage.removeItem('loggedInUser');
   };
 
   useEffect(() => {
@@ -42,6 +56,8 @@ export const GlobalProvider = ({ children }) => {
       loggedInUser.expires = new Date(Number(loggedInUser.expires)).getTime();
       add(loggedInUser);
     }
+
+    setLoading(false);
   }, []);
 
   return (
@@ -53,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
         remove,
       }}
     >
-      {children}
+      {!loading && children}
     </GlobalContext.Provider>
   );
 };

@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 
 export default function Home() {
   const router = useRouter();
-  const context = useContext(GlobalContext);
+  const { add } = useContext(GlobalContext);
 
   const authInfo = router.query;
 
@@ -19,8 +19,7 @@ export default function Home() {
         Object.prototype.hasOwnProperty.call(authInfo, 'expires')
       ) {
         // login info provided in query string
-        context.add(authInfo);
-        localStorage.setItem('loggedInUser', JSON.stringify(authInfo));
+        add(authInfo);
         router.push('/your-vibe');
       } else {
         // login info not provided/present
