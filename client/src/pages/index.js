@@ -18,7 +18,6 @@ export default function Home() {
   const logout = (e) => {
     e.preventDefault();
     context.remove();
-    localStorage.removeItem('loggedInUser');
   };
 
   return (
