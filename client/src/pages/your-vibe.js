@@ -8,6 +8,17 @@ import VibeCheck from '../components/VibeCheck';
 import ErrorReturnHome from '../components/ErrorReturnHome';
 import styles from '../styles/pages/YourVibe.module.scss';
 
+const noSongsError = {
+  message:
+    'No songs found. Listen to some tunes without Spotify private session enabled and check again.',
+  type: 'info',
+}
+
+const serverError = {
+  message: 'Error connecting to server',
+  type: 'error',
+}
+
 export default function YourVibe() {
   const context = useContext(GlobalContext);
   const router = useRouter();
@@ -24,57 +35,47 @@ export default function YourVibe() {
     }
   }, []);
 
-  useEffect(async () => {
-    if (context.accessToken !== null) {
-      // user is logged in
-      if (new Date().getTime() >= context.expires) {
-        // access token has expired; get refreshed token
-        try {
-          const refreshed = await getRefreshedToken(context.refreshToken);
-          context.refresh(refreshed.data);
-
-          const res = await getSongs(timeframe, refreshed.data.accessToken);
-
-          if (res.status === 204) {
-            // no songs to show
-            setError({
-              message:
-                'No songs found. Listen to some tunes without Spotify private session enabled and check again.',
-              type: 'info',
-            });
-          } else {
-            setVibe(res.data);
-          }
-          setError(null);
-        } catch (err) {
-          setError({
-            message: 'Error connecting to server',
-            type: 'error',
-          });
-        }
-      } else {
-        // just grab the song list
-        try {
-          const res = await getSongs(timeframe, context.accessToken);
-          if (res.status === 204) {
-            // no songs to show
-            setError({
-              message:
-                'No songs found. Listen to some tunes without Spotify private session enabled and check again',
-              type: 'info',
-            });
-          } else {
-            setVibe(res.data);
+  useEffect(() => {
+    const handleStuff = async () => {
+      if (context.accessToken !== null) {
+        // user is logged in
+        if (new Date().getTime() >= context.expires) {
+          // access token has expired; get refreshed token
+          try {
+            const refreshed = await getRefreshedToken(context.refreshToken);
+            context.refresh(refreshed.data);
+  
+            const res = await getSongs(timeframe, refreshed.data.accessToken);
+  
+            if (res.status === 204) {
+              // no songs to show
+              setError(noSongsError);
+            } else {
+              setVibe(res.data);
+            }
             setError(null);
+          } catch (err) {
+            setError(serverError);
           }
-        } catch (err) {
-          setError({
-            message: 'Error connecting to server',
-            type: 'error',
-          });
+        } else {
+          // just grab the song list
+          try {
+            const res = await getSongs(timeframe, context.accessToken);
+            if (res.status === 204) {
+              // no songs to show
+              setError(noSongsError);
+            } else {
+              setVibe(res.data);
+              setError(null);
+            }
+          } catch (err) {
+            setError(serverError);
+          }
         }
       }
     }
+
+    handleStuff()
   }, [context, timeframe]);
 
   const toggleShowForm = () => {
