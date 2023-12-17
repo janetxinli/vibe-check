@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   PUBLIC_URL = `http://localhost:${PORT}`;
   FRONTEND_URL = 'http://localhost:3000';
 } else {
-  PUBLIC_URL = 'https://mysterious-castle-06210.herokuapp.com';
+  PUBLIC_URL = 'https://vibe-check-server.onrender.com';
   FRONTEND_URL = 'https://vibecheck.vercel.app';
 }
 
