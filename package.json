@@ -7,8 +7,6 @@
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "jest --verbose",
-    "deploy": "git push heroku master",
-    "logs:prod": "heroku logs --tail",
     "client": "cd client && npm run dev"
   },
   "author": "Janet Li",
